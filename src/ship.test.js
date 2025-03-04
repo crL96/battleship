@@ -1,4 +1,4 @@
-const Ship = require("./index.js");
+import Ship from "./ship.js"
 
 let testShip = new Ship(3);
 
