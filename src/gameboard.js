@@ -53,11 +53,19 @@ export default class Gameboard {
 
         //Check if slot has ship object
         else if (this.board[x][y] instanceof Ship) {
+
             this.board[x][y].hit();
             this.board[x][y] = "hit";
         }
 
         //if spot has already been tried
         else return false;
+    }
+
+    allSunk() {
+        for (let ship of this.#ships) {
+            if (ship.isSunk() === false) return false;
+        }
+        return true;
     }
 }

@@ -69,3 +69,32 @@ test("receiveAttack, return false if already tried", () => {
     expect(gameboard.receiveAttack(7, 7)).toBe(false);
 });
 
+//allSunk
+test("allSunk, no ships are sunk", () => {
+    gameboard.placeShip(0, 0, 2, "hori");
+    gameboard.placeShip(4, 0, 2, "hori");
+
+    expect(gameboard.allSunk()).toBe(false);
+});
+
+test("allSunk, one ship is sunk", () => {
+    gameboard.placeShip(0, 0, 2, "hori");
+    gameboard.placeShip(4, 0, 2, "hori");
+
+    gameboard.receiveAttack(0, 0);
+    gameboard.receiveAttack(1, 0);
+
+    expect(gameboard.allSunk()).toBe(false);
+});
+
+test("allSunk, all ships are sunk", () => {
+    gameboard.placeShip(0, 0, 2, "hori");
+    gameboard.placeShip(4, 0, 2, "hori");
+
+    gameboard.receiveAttack(0, 0);
+    gameboard.receiveAttack(1, 0);
+    gameboard.receiveAttack(4, 0);
+    gameboard.receiveAttack(5, 0);
+    
+    expect(gameboard.allSunk()).toBe(true);
+});
