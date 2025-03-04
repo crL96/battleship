@@ -17,8 +17,6 @@ export default class Gameboard {
     }
 
     placeShip(x, y, length, orientation) {
-        const newShip = new Ship(length);
-
         if (orientation === "vert") {
             //Check if slots are occupied or outside board
             for (let i = y; i < length + y; i++) {
@@ -26,6 +24,7 @@ export default class Gameboard {
                     return false;
             }
             // Add ship if free
+            const newShip = new Ship(length);
             for (let i = y; i < length + y; i++) {
                 this.board[x][i] = newShip;
             }
@@ -35,6 +34,7 @@ export default class Gameboard {
                     return false;
             }
 
+            const newShip = new Ship(length);
             for (let i = x; i < length + x; i++) {
                 this.board[i][y] = newShip;
             }
