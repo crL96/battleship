@@ -6,6 +6,7 @@ beforeEach(() => {
     gameboard = new Gameboard();
 });
 
+//placeShip
 test("placed ship (vertical) should mark coordinates on board as object (ship)", () => {
     gameboard.placeShip(4, 1, 3, "vert");
 
@@ -35,3 +36,36 @@ test("if space is already occupied, return false", () => {
 test("if coordinates are outside board, return false", () => {
     expect(gameboard.placeShip(9, 9, 3, "vert")).toBe(false);
 });
+
+
+//receiveAttack
+test("receiveAttack, miss, slot update to miss", () => {
+    gameboard.placeShip(0, 0, 3, "hori");
+    gameboard.receiveAttack(7, 7);
+
+    expect(gameboard.board[7][7]).toBe("miss");
+});
+
+test("receiveAttack, hit, run hit() and change slot to hit", () => {
+    gameboard.placeShip(0, 0, 3, "hori");
+
+    const testShip = gameboard.board[0][0];
+
+    gameboard.receiveAttack(0, 0);
+    gameboard.receiveAttack(1, 0);
+    gameboard.receiveAttack(2, 0);
+
+    expect(gameboard.board[0][0]).toBe("hit");
+    expect(gameboard.board[1][0]).toBe("hit");
+    expect(gameboard.board[2][0]).toBe("hit");
+    expect(testShip.isSunk()).toBe(true);
+
+});
+
+test("receiveAttack, return false if already tried", () => {
+    gameboard.placeShip(0, 0, 3, "hori");
+    gameboard.receiveAttack(7, 7);
+
+    expect(gameboard.receiveAttack(7, 7)).toBe(false);
+});
+

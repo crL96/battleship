@@ -1,6 +1,8 @@
 import Ship from "./ship.js";
 
 export default class Gameboard {
+    #ships;
+
     constructor() {
         this.board = [
             new Array(10),
@@ -12,8 +14,8 @@ export default class Gameboard {
             new Array(10),
             new Array(10),
             new Array(10),
-            new Array(10),
-        ];
+            new Array(10),];
+        this.#ships = [];
     }
 
     placeShip(x, y, length, orientation) {
@@ -25,6 +27,7 @@ export default class Gameboard {
             }
             // Add ship if free
             const newShip = new Ship(length);
+            this.#ships.push(newShip);
             for (let i = y; i < length + y; i++) {
                 this.board[x][i] = newShip;
             }
@@ -35,9 +38,26 @@ export default class Gameboard {
             }
 
             const newShip = new Ship(length);
+            this.#ships.push(newShip);
             for (let i = x; i < length + x; i++) {
                 this.board[i][y] = newShip;
             }
         }
+    }
+    
+    receiveAttack(x, y) {
+        //Check if slot is empty
+        if (this.board[x][y] === undefined) {
+            this.board[x][y] = "miss";
+        }
+
+        //Check if slot has ship object
+        else if (this.board[x][y] instanceof Ship) {
+            this.board[x][y].hit();
+            this.board[x][y] = "hit";
+        }
+
+        //if spot has already been tried
+        else return false;
     }
 }
