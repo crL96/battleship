@@ -50,10 +50,6 @@ function computerAttacks() {
         computerAttacks();
         return;
     }
-    if (humanPlayer.gameboard.allSunk() === true) {
-        gameWon(humanPlayer);
-        return;
-    }
 }
 
 function humanAttacks(x, y) {
@@ -61,10 +57,14 @@ function humanAttacks(x, y) {
     if (computerPlayer.gameboard.receiveAttack(x, y) === false) return false;
     
     enemyBoardVisible[x][y] = computerPlayer.gameboard.board[x][y];
-    if (computerPlayer.gameboard.allSunk() === true) {
-        gameWon(humanPlayer);
-        return;
-    }
 }
 
-export { humanPlayer, enemyBoardVisible, computerAttacks, humanAttacks };
+function checkGameWon() {
+    if (computerPlayer.gameboard.allSunk() === true) {
+        return humanPlayer.name;
+    } else if (humanPlayer.gameboard.allSunk() === true) {
+        return computerPlayer.nane;
+    } else return false;
+}
+
+export { humanPlayer, enemyBoardVisible, computerAttacks, humanAttacks, checkGameWon };
