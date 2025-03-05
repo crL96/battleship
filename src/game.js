@@ -1,20 +1,9 @@
 import Player from "./player.js";
 
-const humanPlayer = new Player("Carl", "human");
-const computerPlayer = new Player("Computer", "computer");
-
-const enemyBoardVisible = [
-    new Array(10),
-    new Array(10),
-    new Array(10),
-    new Array(10),
-    new Array(10),
-    new Array(10),
-    new Array(10),
-    new Array(10),
-    new Array(10),
-    new Array(10),
-];
+let humanPlayer;
+let computerPlayer;
+let enemyBoardVisible;
+newGame();
 
 humanPlayer.gameboard.placeShip(8, 0, 5, "vert");
 humanPlayer.gameboard.placeShip(0, 2, 4, "hori");
@@ -27,7 +16,6 @@ placeComputerShip(4);
 placeComputerShip(3);
 placeComputerShip(3);
 placeComputerShip(2);
-
 
 //Functions
 function placeComputerShip(length) {
@@ -55,7 +43,7 @@ function computerAttacks() {
 function humanAttacks(x, y) {
     //calls receiveAttack and checks if slot has already been tried
     if (computerPlayer.gameboard.receiveAttack(x, y) === false) return false;
-    
+
     enemyBoardVisible[x][y] = computerPlayer.gameboard.board[x][y];
 }
 
@@ -67,4 +55,27 @@ function checkGameWon() {
     } else return false;
 }
 
-export { humanPlayer, enemyBoardVisible, computerAttacks, humanAttacks, checkGameWon };
+function newGame() {
+    humanPlayer = new Player("Human", "human");
+    computerPlayer = new Player("Computer", "computer");
+    enemyBoardVisible = [
+        new Array(10),
+        new Array(10),
+        new Array(10),
+        new Array(10),
+        new Array(10),
+        new Array(10),
+        new Array(10),
+        new Array(10),
+        new Array(10),
+        new Array(10),
+    ];
+}
+
+export {
+    humanPlayer,
+    enemyBoardVisible,
+    computerAttacks,
+    humanAttacks,
+    checkGameWon,
+};
