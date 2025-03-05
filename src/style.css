@@ -1,0 +1,31 @@
+.boardContainer {
+    border: 1px solid black;
+    width: 500px;
+    height: 500px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 2px;
+    margin-bottom: 2rem;
+    /* border: 2px solid white; */
+}
+
+.test {
+    background-color: green;
+}
+
+.unexplored {
+    background-color: grey;
+}
+
+.miss {
+    background-color: rgb(253, 241, 135);
+}
+
+.hit {
+    background-color: red;
+}
+
+.ship {
+    background-color: green;
+}
