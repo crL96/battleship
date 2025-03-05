@@ -20,9 +20,9 @@ export default class Gameboard {
 
     placeShip(x, y, length, orientation) {
         if (orientation === "vert") {
-            //Check if slots are occupied or outside board
+            //Check if slots are outside board or occupied
             for (let i = y; i < length + y; i++) {
-                if (this.board[x][i] != undefined || x > 9 || i > 9)
+                if (x > 9 || i > 9 || this.board[x][i] != undefined)
                     return false;
             }
             // Add ship if free
@@ -33,7 +33,7 @@ export default class Gameboard {
             }
         } else {
             for (let i = x; i < length + x; i++) {
-                if (this.board[i][y] != undefined || i > 9 || y > 9)
+                if (i > 9 || y > 9 || this.board[i][y] != undefined)
                     return false;
             }
 

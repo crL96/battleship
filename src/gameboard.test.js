@@ -37,6 +37,10 @@ test("if coordinates are outside board, return false", () => {
     expect(gameboard.placeShip(9, 9, 3, "vert")).toBe(false);
 });
 
+test("if coordinates are outside board, return false", () => {
+    expect(gameboard.placeShip(10, 10, 3, "hori")).toBe(false);
+});
+
 
 //receiveAttack
 test("receiveAttack, miss, slot update to miss", () => {
