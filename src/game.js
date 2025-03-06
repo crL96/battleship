@@ -59,12 +59,6 @@ function newGame() {
         new Array(10),
     ];
 
-    randomPlaceShip(5, humanPlayer);
-    randomPlaceShip(4, humanPlayer);
-    randomPlaceShip(3, humanPlayer);
-    randomPlaceShip(3, humanPlayer);
-    randomPlaceShip(2, humanPlayer);
-
     randomPlaceShip(5, computerPlayer);
     randomPlaceShip(4, computerPlayer);
     randomPlaceShip(3, computerPlayer);
@@ -78,5 +72,6 @@ export {
     computerAttacks,
     humanAttacks,
     checkGameWon,
-    newGame
+    newGame,
+    randomPlaceShip,
 };
