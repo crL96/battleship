@@ -39,7 +39,7 @@ function checkGameWon() {
     if (computerPlayer.gameboard.allSunk() === true) {
         return humanPlayer.name;
     } else if (humanPlayer.gameboard.allSunk() === true) {
-        return computerPlayer.nane;
+        return computerPlayer.name;
     } else return false;
 }
 
