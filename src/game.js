@@ -5,28 +5,28 @@ let computerPlayer;
 let enemyBoardVisible;
 newGame();
 
-humanPlayer.gameboard.placeShip(8, 0, 5, "vert");
-humanPlayer.gameboard.placeShip(0, 2, 4, "hori");
-humanPlayer.gameboard.placeShip(0, 4, 3, "hori");
-humanPlayer.gameboard.placeShip(0, 6, 3, "hori");
-humanPlayer.gameboard.placeShip(0, 8, 2, "hori");
+randomPlaceShip(5, humanPlayer);
+randomPlaceShip(4, humanPlayer);
+randomPlaceShip(3, humanPlayer);
+randomPlaceShip(3, humanPlayer);
+randomPlaceShip(2, humanPlayer);
 
-placeComputerShip(5);
-placeComputerShip(4);
-placeComputerShip(3);
-placeComputerShip(3);
-placeComputerShip(2);
+randomPlaceShip(5, computerPlayer);
+randomPlaceShip(4, computerPlayer);
+randomPlaceShip(3, computerPlayer);
+randomPlaceShip(3, computerPlayer);
+randomPlaceShip(2, computerPlayer);
 
 //Functions
-function placeComputerShip(length) {
+function randomPlaceShip(length, player) {
     const x = Math.floor(Math.random() * 10);
     const y = Math.floor(Math.random() * 10);
     //Set direction to 50/50 chance of hori or vert
     let direction = "hori";
     if (Math.random() >= 0.5) direction = "vert";
     //try to place ship, if placement invalid, try again
-    if (computerPlayer.gameboard.placeShip(x, y, length, direction) === false) {
-        placeComputerShip(length);
+    if (player.gameboard.placeShip(x, y, length, direction) === false) {
+        randomPlaceShip(length, player);
     }
 }
 
