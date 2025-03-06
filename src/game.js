@@ -5,18 +5,6 @@ let computerPlayer;
 let enemyBoardVisible;
 newGame();
 
-randomPlaceShip(5, humanPlayer);
-randomPlaceShip(4, humanPlayer);
-randomPlaceShip(3, humanPlayer);
-randomPlaceShip(3, humanPlayer);
-randomPlaceShip(2, humanPlayer);
-
-randomPlaceShip(5, computerPlayer);
-randomPlaceShip(4, computerPlayer);
-randomPlaceShip(3, computerPlayer);
-randomPlaceShip(3, computerPlayer);
-randomPlaceShip(2, computerPlayer);
-
 //Functions
 function randomPlaceShip(length, player) {
     const x = Math.floor(Math.random() * 10);
@@ -70,6 +58,18 @@ function newGame() {
         new Array(10),
         new Array(10),
     ];
+
+    randomPlaceShip(5, humanPlayer);
+    randomPlaceShip(4, humanPlayer);
+    randomPlaceShip(3, humanPlayer);
+    randomPlaceShip(3, humanPlayer);
+    randomPlaceShip(2, humanPlayer);
+
+    randomPlaceShip(5, computerPlayer);
+    randomPlaceShip(4, computerPlayer);
+    randomPlaceShip(3, computerPlayer);
+    randomPlaceShip(3, computerPlayer);
+    randomPlaceShip(2, computerPlayer);
 }
 
 export {
@@ -78,4 +78,5 @@ export {
     computerAttacks,
     humanAttacks,
     checkGameWon,
+    newGame
 };
