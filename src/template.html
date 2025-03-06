@@ -11,8 +11,22 @@
     </header>
 
     <main>
-        <div id="board1" class="boardContainer"></div>
-        <div id="board2" class="boardContainer"></div>
+        <div id="playerContainer">
+            <h2>Player Board</h2>
+            <div id="board1" class="boardContainer"></div>
+            <button id="newGameBtn">New Game</button>
+            <button id="randomPlaceBtn">Random Ship Placement</button>
+        </div>
+        <div id="enemyContainer">
+            <h2>Enemy Board</h2>
+            <div id="board2" class="boardContainer"></div>
+        </div>
     </main>
+    <button id="test">open</button>
+    <dialog id="endscreen">
+        <h3>We have a winner!</h3>
+        <p><strong id="winnerName">Name</strong> has won the game!</p>
+        <button id="playAgainBtn">Play Again</button>
+    </dialog>
 </body>
 </html>
