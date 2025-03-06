@@ -20,7 +20,13 @@ function renderBoard(board, UIboardNr) {
             boardElement.appendChild(squareElement);
         }
     }
-
 }
 
-export {renderBoard};
+function renderEndScreen(winner) {
+    const dialog = document.querySelector("#endscreen");
+    const winnerTextbox = document.querySelector("#winnerName");
+    winnerTextbox.textContent = winner;
+    dialog.showModal();
+}
+
+export {renderBoard, renderEndScreen};
