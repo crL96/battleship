@@ -5,6 +5,7 @@ import {
     computerAttacks,
     humanAttacks,
     checkGameWon,
+    newGame
 } from "./game.js";
 
 //Event listeners
@@ -34,4 +35,20 @@ boardElement.addEventListener("click", (e) => {
         }
 
     }, 100);
+});
+
+const newGameBtn = document.querySelector("#newGameBtn");
+newGameBtn.addEventListener("click", () => {
+    newGame();
+    renderBoard(enemyBoardVisible, 2);
+    renderBoard(humanPlayer.gameboard.board, 1);
+});
+
+const playAgainBtn = document.querySelector("#playAgainBtn");
+playAgainBtn.addEventListener("click", () => {
+    const dialog = document.querySelector("#endscreen");
+    newGame();
+    renderBoard(enemyBoardVisible, 2);
+    renderBoard(humanPlayer.gameboard.board, 1);
+    dialog.close();
 });
