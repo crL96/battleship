@@ -24,11 +24,14 @@ boardElement.addEventListener("click", (e) => {
         return;
     }
 
-    computerAttacks();
-    renderBoard(humanPlayer.gameboard.board, 1);
+    setTimeout(() => {
+        computerAttacks();
+        renderBoard(humanPlayer.gameboard.board, 1);
+    
+        gameWon = checkGameWon();
+        if (gameWon != false) {
+            renderEndScreen(gameWon);
+        }
 
-    gameWon = checkGameWon();
-    if (gameWon != false) {
-        renderEndScreen(gameWon);
-    }
+    }, 100);
 });
