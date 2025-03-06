@@ -9,6 +9,8 @@ import {
     randomPlaceShip,
 } from "./game.js";
 
+
+let gameActive = false;
 //Event listeners
 const boardElement = document.querySelector("#board2");
 boardElement.addEventListener("click", (e) => {
@@ -38,6 +40,8 @@ boardElement.addEventListener("click", (e) => {
         }
 
     }, 100);
+
+    gameActive = true;
 });
 
 const newGameBtn = document.querySelector("#newGameBtn");
@@ -45,10 +49,13 @@ newGameBtn.addEventListener("click", () => {
     newGame();
     renderBoard(enemyBoardVisible, 2);
     renderBoard(humanPlayer.gameboard.board, 1);
+    gameActive = false;
 });
 
 const randomPlaceBtn = document.querySelector("#randomPlaceBtn");
 randomPlaceBtn.addEventListener("click", () => {
+    if (gameActive === true) return
+
     newGame();
     randomPlaceShip(5, humanPlayer);
     randomPlaceShip(4, humanPlayer);
@@ -56,6 +63,7 @@ randomPlaceBtn.addEventListener("click", () => {
     randomPlaceShip(3, humanPlayer);
     randomPlaceShip(2, humanPlayer);
     renderBoard(humanPlayer.gameboard.board, 1);
+    renderBoard(enemyBoardVisible, 2);
 });
 
 const playAgainBtn = document.querySelector("#playAgainBtn");
@@ -65,4 +73,5 @@ playAgainBtn.addEventListener("click", () => {
     renderBoard(enemyBoardVisible, 2);
     renderBoard(humanPlayer.gameboard.board, 1);
     dialog.close();
+    gameActive = false;
 });
